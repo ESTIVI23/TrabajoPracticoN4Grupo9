@@ -10,8 +10,8 @@ class Escena1 extends Phaser.Scene{
   
 
   preload(){
-      this.load.image('sky','../public/img/sky.png');
-      this.load.image('ground', '../public/img/platform.png');
+      this.load.image('sky','../public/img/escenario1.jpg');
+      this.load.image('ground', '../public/img/platf.png');
       this.load.image('star', '../public/img/star.png');
       this.load.image('bomb', '../public/img/bomb.png');
       this.load.spritesheet('dude', '../public/img/dude.png', {frameWidth:32, frameHeight:48});
@@ -21,13 +21,15 @@ class Escena1 extends Phaser.Scene{
       //cielo y barras
       this.add.image(400,300,'sky');
       this.platforms = this.physics.add.staticGroup();
-      this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+      this.platforms.create(150, 568, 'ground').setScale(1).refreshBody();
+      this.platforms.create(470, 568, 'ground').setScale(1).refreshBody();
+      this.platforms.create(784, 568, 'ground').setScale(1).refreshBody();
       this.platforms.create(600, 400, 'ground');
       this.platforms.create(50, 250, 'ground');
       this.platforms.create(750, 220, 'ground');
       
       this.platforms.children.iterate(function(platform) {
-          platform.setTint(0x21572F); // Código de color verde oscuro
+          //platform.setTint(0x21572F); // Código de color verde oscuro
       });
       //Estrella y jugador
       //this.add.image(400, 300, 'star');
@@ -82,7 +84,7 @@ class Escena1 extends Phaser.Scene{
       this.physics.add.overlap(this.player, this.stars, this.collectStar, null , this );
 
       //Para controlar el puntaje
-      this.scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
+      this.scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#FFFF'});
 
       //Para agregar las bombas
       this.bombs = this.physics.add.group();

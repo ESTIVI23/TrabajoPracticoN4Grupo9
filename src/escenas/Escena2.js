@@ -12,7 +12,7 @@ class Escena2 extends Phaser.Scene{
   preload(){
       this.load.image('sky2','../public/img/fondo1.jpeg');
       this.load.image('ground', '../public/img/platform.png');
-      this.load.image('lava', '../public/img/lava.png');
+      this.load.image('lava', '../public/img/lavaa.png');
       this.load.image('star', '../public/img/star.png');
       this.load.image('bomb', '../public/img/bomb.png');
       this.load.spritesheet('dude', '../public/img/dude.png', {frameWidth:32, frameHeight:48});
@@ -20,7 +20,7 @@ class Escena2 extends Phaser.Scene{
 
   create(){
       //cielo y barras
-      this.add.image(400,300,'sky2').setScale(1.7).setTint(0x980B54);;
+      this.add.image(400,300,'sky2').setScale(1.7).setTint(0x980B54);
       //this.add.image(400,300,'sky').setTint(0x980B54);
       this.platforms = this.physics.add.group();
 
@@ -34,10 +34,12 @@ class Escena2 extends Phaser.Scene{
       this.platforms.create(400, 80, 'ground');
       this.platforms.create(750, 220, 'ground');
 
-      this.piso.create(400, 568, 'lava').setScale(2).refreshBody();
+      this.piso.create(150, 577, 'lava').setScale(1).refreshBody();
+      this.piso.create(400, 577, 'lava').setScale(1).refreshBody();
+      this.piso.create(700, 577, 'lava').setScale(1).refreshBody();
 
       this.platforms.children.iterate(function(platform) {
-          platform.setTint(0xFF4F00); // Código de color naranja
+          //platform.setTint(0xFF4F00); // Código de color naranja
       });
 
 
@@ -82,6 +84,9 @@ class Escena2 extends Phaser.Scene{
       this.physics.add.collider(this.player, this.platforms);
 
       this.cursors = this.input.keyboard.createCursorKeys();
+
+
+
   
       //Se  agregan las estrellas
       this.stars = this.physics.add.group({
@@ -108,7 +113,19 @@ class Escena2 extends Phaser.Scene{
       this.bombs = this.physics.add.group();
       this.physics.add.collider(this.bombs, this.platforms);
       this.physics.add.collider(this.player, this.bombs, this.hitBomb, null, this);
+
+
+      ///////////////////////////////////////////////////
+
+      //Colision de jugador y LAVA
+         // this.physics.add.collider(this.player, this.piso);
+
+      this.physics.add.collider(this.player, this.piso, this.fire, null, this);
+     
+      
+       /////////////////////////////////////////////////////////
   
+       
   }
   update(){
 
@@ -158,6 +175,8 @@ class Escena2 extends Phaser.Scene{
       }
   }
 
+  
+
   hitBomb(player, bomb){
       this.physics.pause();
       player.setTint(0xff0000);
@@ -165,5 +184,26 @@ class Escena2 extends Phaser.Scene{
       //gameOver = true;
       this.scene.start('Escena2');
   }
+
+  fire(player, piso){
+  this.time.addEvent({
+    delay: 500,
+    callbackScope: this,
+    callback: function(){
+        this.scene.start('GameO')
+    }
+  })
+   }
+  ///////////////////////
+ /* fire(player, piso){
+    this.physics.pause();
+    player.setTint(0xff0000);
+    player.anims.play('turn');
+    this.score = 0;
+    //gameOver = true;
+    this.scene.start('GameO');
+    //this.scene.start('Escena2');
+}*/
+////////////////////////////////
 }
 export default Escena2;
