@@ -1,17 +1,16 @@
-import Menu from "./escenas/Menu.js";
-import play from "./escenas/play.js";
- 
- let gameConfig = {   
-     type : Phaser.CANVAS,
-     backgroundColor : 0x444444,
-     scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        parent: "thegame",
-        width : 800,
-        height: 800
-     },
-      scene: [Menu, play]
- }   
-
- let game =new Phaser.Game(gameConfig);
+import Escena1 from "./escenas/Escena1.js"
+import Escena2 from "./escenas/Escena2.js"
+let config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics:{
+        default: 'arcade',
+        arcade: {
+            gravity: {y:300},
+            debug: false
+        }
+    },
+    scene:[Escena1,Escena2]
+};
+let game = new Phaser.Game(config);

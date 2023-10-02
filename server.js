@@ -16,6 +16,6 @@ app.use('/src', express.static(__dirname +'/src'));
 app.use('/node_modules', express.static(__dirname+'/node_modules'));
 
 //configuarar server basico
-app.listen(5000, function(){
+app.listen(5004, function(){
     console.log("servidor NODE ESTIVI23 CORRIDENDO CORRECTAMENTE")
 })
