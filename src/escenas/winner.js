@@ -27,23 +27,17 @@ class winner  extends Phaser.Scene{
       
       this.add.image(400,295,'winner');  // imagen del fondo 
       this.add.image(400,200,'win');  // imagen del fondo
-      this.add.image(400,350,'volvermenu');  // imagen del fondo
-      this.scoreText = this.add.text(325, 500, 'score: '+ this.score, {fontSize: '32px', fill: '#fff'})
-      this.scoreText.setText('Score: ' + this.score);
-       
-     
+      this.botonn = this.add.image(400,350,'volvermenu').setInteractive();  // imagen del fondo
       
-      
-        ///////////////////
-            this.starbutton   = this.add.image(400,800,'volvermenu').setInteractive();
-            //this.starbutton.setScale(0.5);
-            
-        
-              this.starbutton.on('pointerdown', () =>{
-                this.scene.start('Menu');
 
-            }  );
-           
+      // Asigna una función al evento 'pointerdown' (clic)
+      this.botonn.on('pointerdown', () => {
+        this.scene.start('Menu'); // Navega a la escena deseada
+      });
+
+              
+          this.scoreText = this.add.text(325, 500, 'score: '+ this.score, {fontSize: '32px', fill: '#fff'})
+          this.scoreText.setText('Score: ' + this.score);  
         
         
 
