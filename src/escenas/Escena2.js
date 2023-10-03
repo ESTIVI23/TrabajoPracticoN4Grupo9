@@ -188,7 +188,8 @@ class Escena2 extends Phaser.Scene{
   } 
 
   reaccionTrofeo(player, trofeo){
-    this.scene.start('winner');
+   
+    this.scene.start('winner',{score:this.score});
   }
 
   //Colision entre el jugador y las estrellas
