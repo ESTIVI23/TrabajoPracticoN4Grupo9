@@ -91,7 +91,7 @@ class Escena2 extends Phaser.Scene{
       //Se  agregan las estrellas
       this.stars = this.physics.add.group({
           key: 'star',
-          repeat: 5, //cantidad de estrellas
+          repeat: 6, //cantidad de estrellas
           setXY: { x: 12, y: 0, stepX: 110 } //empieza en la posicion x e y, se repite cada 70 de espacios
       });
 

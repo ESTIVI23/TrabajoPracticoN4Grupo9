@@ -94,7 +94,7 @@ class Escena1 extends Phaser.Scene{
   }
   update(){
 
-      if(this.score >50){
+      if(this.score >250){
         this.physics.pause();
         this.player.setTint(0xff0000);
         this.player.anims.play('turn');
@@ -146,9 +146,8 @@ class Escena1 extends Phaser.Scene{
       player.setTint(0xff0000);
       player.anims.play('turn');
       if (this.hitBomb){
-        console.log(this.score);
-        this.score;
-        this.scene.start('Escena2',{score:this.score});
+        
+        this.scene.start('GameO',{score:this.score});
     }
   }
 }

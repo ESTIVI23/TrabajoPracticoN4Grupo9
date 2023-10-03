@@ -31,6 +31,7 @@ class GameO extends Phaser.Scene{
 
         this.starbutton   = this.add.image(150, 500, 'again').setInteractive();
                this.starbutton.on('pointerdown', () =>{
+                   
                    this.scene.start('Escena1');
 
                } );
