@@ -68,7 +68,7 @@ class Escena1 extends Phaser.Scene{
       //Se  agregan las estrellas
       this.stars = this.physics.add.group({
           key: 'star',
-          repeat: 4, //cantidad de estrellas
+          repeat: 6, //cantidad de estrellas
           setXY: { x: 12, y: 0, stepX: 110 } //empieza en la posicion x e y, se repite cada 70 de espacios
       });
 
@@ -93,6 +93,15 @@ class Escena1 extends Phaser.Scene{
   
   }
   update(){
+
+      if(this.score >50){
+        this.physics.pause();
+        this.player.setTint(0xff0000);
+        this.player.anims.play('turn');
+        this.score = 0;
+        this.scene.start('Escena2');
+      }    
+
       if (this.cursors.left.isDown) {
           this.player.setVelocityX(-160);
           
@@ -139,7 +148,7 @@ class Escena1 extends Phaser.Scene{
       player.anims.play('turn');
       this.score = 0;
       //gameOver = true;
-      this.scene.start('Escena2');
+      this.scene.start('GameO');
   }
 }
 export default Escena1;
