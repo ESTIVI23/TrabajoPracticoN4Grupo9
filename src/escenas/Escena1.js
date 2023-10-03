@@ -98,8 +98,7 @@ class Escena1 extends Phaser.Scene{
         this.physics.pause();
         this.player.setTint(0xff0000);
         this.player.anims.play('turn');
-        this.score = 0;
-        this.scene.start('Escena2');
+        this.scene.start('Escena2',{score:this.score});
       }    
 
       if (this.cursors.left.isDown) {
@@ -146,9 +145,11 @@ class Escena1 extends Phaser.Scene{
       this.physics.pause();
       player.setTint(0xff0000);
       player.anims.play('turn');
-      this.score = 0;
-      //gameOver = true;
-      this.scene.start('GameO');
+      if (this.hitBomb){
+        console.log(this.score);
+        this.score;
+        this.scene.start('Escena2',{score:this.score});
+    }
   }
 }
 export default Escena1;
