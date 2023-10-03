@@ -1,3 +1,4 @@
+import Menu from "../src/escenas/menu.js"
 import Escena1 from "./escenas/Escena1.js"
 import Escena2 from "./escenas/Escena2.js"
 import GameO from "./escenas/GameO.js"
@@ -12,6 +13,6 @@ let config = {
             debug: false
         }
     },
-    scene:[Escena1,Escena2,GameO]
+    scene:[Menu,Escena1,Escena2,GameO]
 };
 let game = new Phaser.Game(config);
