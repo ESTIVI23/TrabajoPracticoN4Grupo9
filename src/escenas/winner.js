@@ -2,6 +2,7 @@ class winner  extends Phaser.Scene{
    
     constructor(){
               super("winner");
+               this.scoreText = "" + this.score;
     }
      
     preload(){
@@ -27,7 +28,8 @@ class winner  extends Phaser.Scene{
       this.add.image(400,295,'winner');  // imagen del fondo 
       this.add.image(400,200,'win');  // imagen del fondo
       this.add.image(400,350,'volvermenu');  // imagen del fondo
-      
+      this.scoreText = this.add.text(325, 500, 'score: '+ this.score, {fontSize: '32px', fill: '#fff'})
+      this.scoreText.setText('Score: ' + this.score);
        
      
       

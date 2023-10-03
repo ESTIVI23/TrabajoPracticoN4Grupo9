@@ -4,14 +4,15 @@ class Escena2 extends Phaser.Scene{
       super("Escena2");
       this.platforms = null;
       this.scoreText = "";
-      this.score = 0;
       this.numPlat = 3;
       // Variables globales encapsuladas en el constructor
       this.platformSpeed = 50;
       this.platformGroup = null;
   }
   
-  
+  init(data){
+    this.score = data.score;
+  }
 
   preload(){
       this.load.image('sky2','../public/img/fondo1.jpeg');
@@ -109,7 +110,9 @@ class Escena2 extends Phaser.Scene{
        this.physics.add.overlap(this.player, this.trofeo, this.reaccionTrofeo , null , this );
 
       //Para controlar el puntaje
-      this.scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#00FFFF'});
+      this.scoreText = this.add.text(16, 16, 'score: '+ this.score, {fontSize: '32px', fill: '#00FFFF'});
+      this.scoreText.setText('Score: ' + this.score);
+
 
       //Para agregar las bombas
       this.bombs = this.physics.add.group();
@@ -184,8 +187,9 @@ class Escena2 extends Phaser.Scene{
 
   } 
 
-  reaccionTrofeo(){
-    this.scene.start('winner');
+  reaccionTrofeo(player, trofeo){
+   
+    this.scene.start('winner',{score:this.score});
   }
 
   //Colision entre el jugador y las estrellas
@@ -214,7 +218,11 @@ class Escena2 extends Phaser.Scene{
       player.setTint(0xff0000);
       player.anims.play('turn');
       //gameOver = true;
-      this.scene.start('Escena2');
+      this.scene.start('End');
+      if (this.scoreText){
+        console.log(this.score);
+        this.scene.start('GameO',{score:this.score});
+    }
   }
 
   fire(player, piso){
@@ -223,7 +231,10 @@ class Escena2 extends Phaser.Scene{
         delay: 500,
         callbackScope: this,
         callback: function(){
-            this.scene.start('GameO')
+            if (this.scoreText){
+                console.log(this.score);
+                this.scene.start('GameO',{score:this.score});
+            }
         }
     })
    }
