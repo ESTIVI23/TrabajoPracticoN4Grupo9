@@ -18,6 +18,7 @@ class Escena1 extends Phaser.Scene{
   }
 
   create(){
+    this.score= 0;
       //cielo y barras
       this.add.image(400,300,'sky');
       this.platforms = this.physics.add.staticGroup();
@@ -28,11 +29,7 @@ class Escena1 extends Phaser.Scene{
       this.platforms.create(50, 250, 'ground');
       this.platforms.create(750, 220, 'ground');
       
-      this.platforms.children.iterate(function(platform) {
-          //platform.setTint(0x21572F); // Código de color verde oscuro
-      });
-      //Estrella y jugador
-      //this.add.image(400, 300, 'star');
+      //PLAYER
       this.player = this.physics.add.sprite(100, 100, 'dude');
       //physics del player
       this.player.setBounce(0.2); //rebote entre 0 o 1
@@ -96,8 +93,8 @@ class Escena1 extends Phaser.Scene{
 
       if(this.score >250){
         this.physics.pause();
-        this.player.setTint(0xff0000);
         this.player.anims.play('turn');
+        this.scene.stop('Escena1');
         this.scene.start('Escena2',{score:this.score});
       }    
 
@@ -142,13 +139,11 @@ class Escena1 extends Phaser.Scene{
   }
 
   hitBomb(player, bomb){
-      this.physics.pause();
-      player.setTint(0xff0000);
-      player.anims.play('turn');
-      if (this.hitBomb){
-        
-        this.scene.start('GameO',{score:this.score});
-    }
+    this.physics.pause();
+    player.setTint(0xff0000);
+    player.anims.play('turn');
+    this.scene.stop('Escena1');
+    this.scene.start('GameO',{score:this.score});
   }
 }
 export default Escena1;
