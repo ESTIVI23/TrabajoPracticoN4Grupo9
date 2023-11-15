@@ -3,6 +3,7 @@ import Escena1 from "./escenas/Escena1.js"
 import Escena2 from "./escenas/Escena2.js"
 import GameO from "./escenas/GameO.js"
 import winner from "./escenas/winner.js"
+import Escena3 from "./escenas/Escena3.js"
 let config = {
     type: Phaser.AUTO,
     width: 800,
@@ -14,6 +15,6 @@ let config = {
             debug: false
         }
     },
-    scene:[Menu,Escena1,Escena2,GameO,winner]
+    scene:[/*Menu,Escena1,Escena2,GameO,winner,*/Escena3,GameO,winner]
 };
 let game = new Phaser.Game(config);
