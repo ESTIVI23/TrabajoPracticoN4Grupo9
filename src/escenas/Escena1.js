@@ -91,7 +91,7 @@ class Escena1 extends Phaser.Scene{
   }
   update(){
 
-      if(this.score >250){
+      if(this.score >20){
         this.physics.pause();
         this.player.anims.play('turn');
         this.scene.stop('Escena1');
