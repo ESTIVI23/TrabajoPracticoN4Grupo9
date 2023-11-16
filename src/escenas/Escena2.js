@@ -203,10 +203,16 @@ class Escena2 extends Phaser.Scene{
 
   } 
 
+
+
   reaccionTrofeo(player, trofeo){
+    // Deten la escena actual
     this.scene.stop('Escena2');
-    this.scene.start('winner',{score:this.score});
-  }
+    
+    // Inicia la siguiente escena (Escena3 en este caso) y pasa el puntaje actual
+    
+    this.scene.start('Escena3', { score: this.score });
+}
 
   //Colision entre el jugador y las estrellas
   collectStar(player, star) {

@@ -15,6 +15,6 @@ let config = {
             debug: false
         }
     },
-    scene:[/*Menu,Escena1,Escena2,GameO,winner,*/Escena3,GameO,winner]
+    scene:[Menu,Escena1,Escena2,Escena3,GameO,winner]
 };
 let game = new Phaser.Game(config);
